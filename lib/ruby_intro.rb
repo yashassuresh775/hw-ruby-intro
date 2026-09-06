@@ -32,12 +32,24 @@ end
 
 # Object representing a book
 class BookInStock
-  attr_accessor :isbn, :price
+  attr_reader :isbn, :price
 
   def initialize(isbn, price)
     raise ArgumentError if isbn.empty? || price <= 0
 
     @isbn = isbn
+    @price = price
+  end
+
+  def isbn=(isbn)
+    raise ArgumentError if isbn.empty?
+
+    @isbn = isbn
+  end
+
+  def price=(price)
+    raise ArgumentError if price <= 0
+
     @price = price
   end
 
