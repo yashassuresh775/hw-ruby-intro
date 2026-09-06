@@ -3,34 +3,45 @@
 # Part 1
 
 def sum(arr)
-  # YOUR CODE HERE
+  arr.sum
 end
 
 def max_2_sum(arr)
-  # YOUR CODE HERE
+  arr.max(2).sum
 end
 
 def sum_to_n?(arr, number)
-  # YOUR CODE HERE
+  arr.combination(2).any? { |first, second| first + second == number }
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, #{name}"
 end
 
 def starts_with_consonant?(string)
-  # YOUR CODE HERE
+  string.match?(/\A[b-df-hj-np-tv-z]/i)
 end
 
 def binary_multiple_of_4?(string)
-  # YOUR CODE HERE
+  string.match?(/\A[01]+\z/) && (string.to_i(2) % 4).zero?
 end
 
 # Part 3
 
 # Object representing a book
 class BookInStock
-  # YOUR CODE HERE
+  attr_accessor :isbn, :price
+
+  def initialize(isbn, price)
+    raise ArgumentError if isbn.empty? || price <= 0
+
+    @isbn = isbn
+    @price = price
+  end
+
+  def price_as_string
+    format('$%.2f', price)
+  end
 end
